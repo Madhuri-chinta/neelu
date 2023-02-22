@@ -1,0 +1,19 @@
+---
+parameters:
+- name: pool
+  displayName: pool
+  type: string
+  default: sweety
+- name: verbose
+  displayName: verbose
+  type: string
+  default: true  
+
+steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    verbose: true
+    publishPackageMetadata: true
+
+

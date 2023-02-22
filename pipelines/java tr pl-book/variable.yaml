@@ -1,5 +1,0 @@
----
-pool: "sweety"
-
-steps:
-  - script: echo printenv
