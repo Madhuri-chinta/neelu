@@ -1,0 +1,8 @@
+---
+pool: sweety
+
+trigger:
+  - main
+
+extends:
+  template: ./nodejs-npm.yaml  
