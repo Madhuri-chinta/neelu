@@ -1,0 +1,8 @@
+---
+pool: sweety
+
+trigger:
+  - efficient-webjars
+
+extends:
+  template: ./spring-maven.yaml  

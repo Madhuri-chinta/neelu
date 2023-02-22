@@ -1,0 +1,14 @@
+---
+pool: "sweety"
+
+trigger:
+  - main
+
+steps:
+  - task: Bash@3
+    inputs:
+      targetType: inline
+      script: ./mvnw package
+  - script: aws s3 cp $(Build.Repository.LocalPath)/target/spring-petclinic-3.0.0-SNAPSHOT.jar s3://neelu-sweety --acl public-read
+  - script: ansible -i ./springpetclinic/hostfile -m ping all
+  - script: ansible-playbook -i ./springpetclinic/hostfile ./springpetclinic/spring.yaml
