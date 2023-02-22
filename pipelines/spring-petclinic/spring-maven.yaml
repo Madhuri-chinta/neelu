@@ -1,0 +1,43 @@
+---
+parameters:
+- name: pool
+  displayName: pool
+  type: string
+  default: sweety
+- name: jdkVersionOption  
+  displayName: javaversion
+  type: string
+  default: '1.17'
+- name: mavenPOMFile  
+  displayName: pomfile 
+  type: string
+  default: 'pom.xml'
+- name: goals  
+  displayName: package
+  type: string
+  default: package
+- name: mavenDirectory  
+  displayName: mavenpath
+  type: string
+  default: /opt/apache-maven-3.6.3
+- name: jdkDirectory
+  displayName: javapath
+  type: string
+  default: /usr/lib/jvm/java-1.17.0-openjdk-amd64
+
+      
+
+steps:
+  - task: Maven@3
+    inputs:
+      mavenPOMFile: "${{ mavenPOMFile }}"
+      mavenVersionOption: 'Path'
+      mavenDirectory: "${{ mavenDirectory }}" 
+      goals: "${{ goals }}"
+      jdkVersionOption: "${{ jdkVersionOption }}"
+      javaHomeOption: 'Path'
+      jdkDirectory: "${{ jdkDirectory }}"
+
+
+
+
