@@ -1,0 +1,14 @@
+trigger:
+  - master
+
+pool: sweety
+  
+steps:
+- script: docker compose -f local.yml run --rm django pytest --junitxml=/app/TEST-report.xml
+  displayName:
+  workingDirectory: $(System.DefaultWorkingDirectory)
+  continueOnError: true     
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' 
+    testResultsFiles: '**/TEST-*.xml'
