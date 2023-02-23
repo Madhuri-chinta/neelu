@@ -1,0 +1,24 @@
+---
+pool: sweety
+
+trigger:
+  - main
+
+resources:
+  repositories:
+  - repository: 'AzureReusuableTemplates'
+    endpoint: github.com_Madhuri-chinta
+    ref: refs/heads/main 
+    name: Madhuri-chinta/neelu 
+    type: 'github'  
+
+stages:
+- stage: Buildstage
+  displayName: Build
+  jobs:
+  - job: MyJob
+    displayName: My First Job
+    steps:
+    - template: ./dotnet-nop.yaml@AzureReusuableTemplates
+      
+    

@@ -1,0 +1,17 @@
+---
+parameters:
+- name: pool
+  displayName: pool
+  type: string
+  default: sweety
+- name: projects
+  displayName: 'projectname'
+  type: string
+  default: ./src/NopCommerce.sln  
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: "{{ parameters.projects }}"
+      
