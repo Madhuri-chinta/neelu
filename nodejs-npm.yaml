@@ -1,9 +1,7 @@
 ---
+pool: 'sweety'
+
 parameters:
-- name: pool
-  displayName: pool
-  type: string
-  default: sweety
 - name: verbose
   displayName: verbose
   type: boolean

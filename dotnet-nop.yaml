@@ -1,9 +1,7 @@
 ---
+pool: 'sweety'
+
 parameters:
-- name: pool
-  displayName: pool
-  type: string
-  default: sweety
 - name: projects
   displayName: 'projectname'
   type: string
@@ -13,5 +11,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: "{{ parameters.projects }}"
+    projects: "${{ parameters.projects }}"
       
