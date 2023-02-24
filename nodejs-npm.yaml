@@ -1,6 +1,4 @@
 ---
-pool: 'sweety'
-
 parameters:
 - name: verbose
   displayName: verbose
