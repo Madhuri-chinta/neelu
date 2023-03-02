@@ -1,0 +1,46 @@
+---
+pool: madhuri
+
+trigger:
+  - main
+
+steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      packageType: 'sdk'
+      version: 6.x
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+    displayName: 'Install Node.js'    
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+      includeNuGetOrg: true     
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: build
+      projects: '**/*.csproj'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'test'
+      publishTestResults: true
+      testRunTitle: runs the test
+  - task: Npm@1
+    inputs:
+      command: 'install'    
+      workingDir: MusicStore/ClientApp/
+  - task: Npm@1
+    inputs:
+      command: 'custom'    
+      workingDir: MusicStore/ClientApp/
+      customCommand: 'test'
+          
+
+    
+          
+
